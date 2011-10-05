@@ -1,0 +1,31 @@
+<h1>Listing login info</h1>
+<div id="header">
+<%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+</div>
+<table>
+  <tr>
+    <th>Site</th>
+    <th>Account</th>
+    <th>Login</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @logininfos.each do |logininfo| %>
+  <tr>
+    <!--<td><%= logininfo.url %></td>-->
+    <td><%= logininfo.urldesc %></td>
+    <td><%= logininfo.account %></td>
+    <td><%= logininfo.form.html_safe %></td>
+
+    <td><%= link_to 'Show', logininfo %></td>
+    <td><%= link_to 'Edit', edit_logininfo_path(logininfo) %></td>
+    <td><%= link_to 'Destroy', logininfo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Logininfo', new_logininfo_path %>

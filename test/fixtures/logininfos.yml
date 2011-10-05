@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  url: MyString
+  urldesc: MyString
+  account: MyString
+  password: MyString
+  form: MyText
+
+two:
+  url: MyString
+  urldesc: MyString
+  account: MyString
+  password: MyString
+  form: MyText

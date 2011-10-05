@@ -1,0 +1,2 @@
+class Logininfo < ActiveRecord::Base
+end

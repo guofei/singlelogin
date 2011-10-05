@@ -1,0 +1,39 @@
+<%= form_for(@logininfo) do |f| %>
+  <% if @logininfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@logininfo.errors.count, "error") %> prohibited this logininfo from being saved:</h2>
+
+      <ul>
+      <% @logininfo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.select :url,[["ＴＷＩＮＳ-Ｇ（大学院システム）","https://twins.tsukuba.ac.jp/tbu-g/campus"],["ＴＷＩＮＳ-Ｕ（学群システム）","https://twins.tsukuba.ac.jp/tbu/campus"],["全学計算機システムウェブメール","https://wmail.u.tsukuba.ac.jp/am_bin/amlogin/login_auth"],["情報Webメール","https://www.coins.tsukuba.ac.jp/webmail/src/redirect.php"]] %>
+  </div>
+  <div class="field">
+    <%= f.label :Description %><br />
+    <%= f.text_field :urldesc %>
+  </div>
+  <div class="field">
+    <%= f.label :Account %><br />
+    <%= f.text_field :account %>
+  </div>
+  <div class="field">
+    <%= f.label :Password %><br />
+    <%= f.password_field :password %>
+  </div>
+<!--
+  <div class="field">
+    <%= f.label :form %><br />
+    <%= f.text_area :form %>
+  </div>
+-->
+  <div class="actions">
+    <%= submit_tag "Add"  %>
+  </div>
+<% end %>
