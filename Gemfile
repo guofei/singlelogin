@@ -5,6 +5,8 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
+gem "shibboleth-rails", "~> 0.3.4"
+
 gem 'devise'
 
 gem 'mysql2'

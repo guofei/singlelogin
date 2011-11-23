@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class LogininfosController < ApplicationController
   before_filter :authenticate_user!  
   # GET /logininfos
@@ -87,9 +88,37 @@ FORM
 <form action="https://twitter.com/sessions?phx=1" class="signin" method="post" target="_blank">
 <input type="text" value="#{@logininfo.account}" name="session[username_or_email]" autocomplete="on" />
 <input type="password" value="#{@logininfo.password}" name="session[password]" />
-<input type="hidden" value="1" name="remember_me" />
-<button type="submit" class="submit button">Login</button>
+<input type="hidden" value="0" name="remember_me" />
+<input type="submit" value="Login" />
+</form>
 FORM
+
+    @moodle_form = <<FORM
+<form action="https://idp.account.tsukuba.ac.jp/idp/Authn/UserPassword" method="post" target="_blank">
+<input name="j_username" type="text" value="#{@logininfo.account}" />
+<input name="j_password" type="password" value="#{@logininfo.password}" />
+<input type="submit" value="Login" />
+</form>
+FORM
+
+    @trios_form =<<FORM
+<form name="LOGIN" method="POST" action="https://trios.tsukuba.ac.jp/scripts/update/kkmain.htm" target="_blank">
+<input type="text" name="LOGIN_ID" value="#{@logininfo.account}" >
+<input type="PASSWORD" name="PASS_WORD" value="#{@logininfo.password}" >
+<input type="submit" name="OK" value="Login" >　
+<input type="hidden" name="BUTTON_NO" value="1">
+</form>
+FORM
+
+    @fair_form =<<FORM
+<form name="loginForm" method="post" action="https://fair.tsukuba.ac.jp/ncnu/Login.do" target="_blank">
+<input type="text" name="Uid" value="#{@logininfo.account}">
+<input type="password" name="Pwd" value="#{@logininfo.password}">
+<input type="submit" value="Login">
+<input type="HIDDEN" name="RequestAction" value="ActionLogin">
+</form>
+FORM
+
 
     if(@logininfo.url == "https://twins.tsukuba.ac.jp/tbu-g/campus") 
       @logininfo.form = @twinsg_form
@@ -101,6 +130,12 @@ FORM
       @logininfo.form = @tsukuba_coins_mail
     elsif(@logininfo.url == "https://twitter.com/sessions?phx=1")
       @logininfo.form = @twitter
+    elsif(@logininfo.url == "https://idp.account.tsukuba.ac.jp/idp/Authn/UserPassword")
+      @logininfo.form = @moodle_form
+    elsif(@logininfo.url == "https://trios.tsukuba.ac.jp/scripts/update/kkmain.htm")
+      @logininfo.form = @trios_form
+    elsif(@logininfo.url == "https://fair.tsukuba.ac.jp/ncnu/Login.do")
+      @logininfo.form = @fair_form
     end
     
 
