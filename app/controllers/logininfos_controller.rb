@@ -47,7 +47,7 @@ class LogininfosController < ApplicationController
 
     
     @twinsu_form = <<FORM
-<form name="login" method="post" action="https://twins.tsukuba.ac.jp/tbu/campus/" target="_blank" >
+<form name="login" method="post" action="https://twins.tsukuba.ac.jp/tbu/campus/" target="_blank" onSubmit="decrypt_account(this)">
 <INPUT type="hidden" name="view" value="view.initial">
 <INPUT type="hidden" name="func" value="function.login">
 <input type="text" name="usernm" value="#{@logininfo.account}">
@@ -57,7 +57,7 @@ class LogininfosController < ApplicationController
 FORM
     
     @twinsg_form = <<FORM
-<form name="login" method="post" action="https://twins.tsukuba.ac.jp/tbu-g/campus/" target="_blank">
+<form name="login" method="post" action="https://twins.tsukuba.ac.jp/tbu-g/campus/" target="_blank" onSubmit="decrypt_account(this)">
 <INPUT type="hidden" name="view" value="view.initial">
 <INPUT type="hidden" name="func" value="function.login">
 <input type="text" name="usernm" value="#{@logininfo.account}">
@@ -67,7 +67,7 @@ FORM
 FORM
 
     @tsukubamail_form = <<FORM
-<form name="login" method="POST" action="https://wmail.u.tsukuba.ac.jp/am_bin/amlogin/login_auth" target="_blank" >
+<form name="login" method="POST" action="https://wmail.u.tsukuba.ac.jp/am_bin/amlogin/login_auth" target="_blank" onSubmit="decrypt_account(this)">
 <input type="text" name="am_authid" value="#{@logininfo.account}">
 <input type="password" name="am_authpasswd" value="#{@logininfo.password}">
 <input type="submit" value="Login">
@@ -75,7 +75,7 @@ FORM
 FORM
 
     @tsukuba_coins_mail = <<FORM
-<form action="https://www.coins.tsukuba.ac.jp/webmail/src/redirect.php" method="post" name="login_form" target="_blank" >
+<form action="https://www.coins.tsukuba.ac.jp/webmail/src/redirect.php" method="post" name="login_form" target="_blank" onSubmit="decrypt_account(this)">
 <input type="text" name="login_username" value="#{@logininfo.account}" onfocus="alreadyFocused=true;" />
 <input type="password" name="secretkey" value="#{@logininfo.password}" onfocus="alreadyFocused=true;" />
 <input type="hidden" name="js_autodetect_results" value="0" />
@@ -85,16 +85,17 @@ FORM
 FORM
 
     @twitter = <<FORM
-<form action="https://twitter.com/sessions?phx=1" class="signin" method="post" target="_blank">
+<form action="https://twitter.com/sessions?phx=1" class="signin" method="post" target="_blank" onSubmit="decrypt_account(this)">
 <input type="text" value="#{@logininfo.account}" name="session[username_or_email]" autocomplete="on" />
 <input type="password" value="#{@logininfo.password}" name="session[password]" />
+<input type="hidden" value="#{@logininfo.password}" name="old" />
 <input type="hidden" value="0" name="remember_me" />
 <input type="submit" value="Login" />
 </form>
 FORM
 
     @moodle_form = <<FORM
-<form action="https://idp.account.tsukuba.ac.jp/idp/Authn/UserPassword" method="post" target="_blank">
+<form action="https://idp.account.tsukuba.ac.jp/idp/Authn/UserPassword" method="post" target="_blank" onSubmit="decrypt_account(this)">
 <input name="j_username" type="text" value="#{@logininfo.account}" />
 <input name="j_password" type="password" value="#{@logininfo.password}" />
 <input type="submit" value="Login" />
@@ -102,16 +103,16 @@ FORM
 FORM
 
     @trios_form =<<FORM
-<form name="LOGIN" method="POST" action="https://trios.tsukuba.ac.jp/scripts/update/kkmain.htm" target="_blank">
+<form name="LOGIN" method="POST" action="https://trios.tsukuba.ac.jp/scripts/update/kkmain.htm" target="_blank" onSubmit="decrypt_account(this)">
 <input type="text" name="LOGIN_ID" value="#{@logininfo.account}" >
-<input type="PASSWORD" name="PASS_WORD" value="#{@logininfo.password}" >
+<input type="password" name="PASS_WORD" value="#{@logininfo.password}" >
 <input type="submit" name="OK" value="Login" >　
 <input type="hidden" name="BUTTON_NO" value="1">
 </form>
 FORM
 
     @fair_form =<<FORM
-<form name="loginForm" method="post" action="https://fair.tsukuba.ac.jp/ncnu/Login.do" target="_blank">
+<form name="loginForm" method="post" action="https://fair.tsukuba.ac.jp/ncnu/Login.do" target="_blank" onSubmit="decrypt_account(this)">
 <input type="text" name="Uid" value="#{@logininfo.account}">
 <input type="password" name="Pwd" value="#{@logininfo.password}">
 <input type="submit" value="Login">
