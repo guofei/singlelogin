@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Url:</b>
+  <b>Site Url:</b>
   <%= @logininfo.url %>
 </p>
 
 <p>
-  <b>Urldesc:</b>
+  <b>Site Description:</b>
   <%= @logininfo.urldesc %>
 </p>
 
@@ -15,13 +15,15 @@
   <%= @logininfo.account %>
 </p>
 
-<!--
 <p>
   <b>Password:</b>
   <%= @logininfo.password %>
 </p>
--->
+  <b>Key's Hashcode:</b>
+  <%= current_user.encrypted_password %>
+<p>
 
+</p>
 <!--
 <p>
   <b>Form:</b>
@@ -29,6 +31,6 @@
 </p>
 -->
 
-<%= link_to 'Destroy', @logininfo, :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to 'Remove', @logininfo, :confirm => 'Are you sure?', :method => :delete %>
 <%= link_to 'Edit', edit_logininfo_path(@logininfo) %> |
 <%= link_to 'Back', logininfos_path %>

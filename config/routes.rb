@@ -1,7 +1,7 @@
 Singlelogin::Application.routes.draw do
   resources :logininfos
 
-  devise_for :users
+  devise_for :users,:controllers => { :sessions => "users/sessions" }
 
   get 'logininfo/index', :to => 'logininfos#index', :as => :user_root
 

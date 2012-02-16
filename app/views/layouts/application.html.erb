@@ -1,22 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Singlelogin</title>
-  <%= stylesheet_link_tag    "application" %>
+  <title>ICT2011</title>
+  <%= stylesheet_link_tag    "/assets/application.css" %>
   <%= javascript_include_tag "application" %>
-<!--
-  <script src="/assets/aes-ctr.js" type="text/javascript"></script>
-  <script src="/assets/utf8.js" type="text/javascript"></script>
-  <script src="/assets/base64.js" type="text/javascript"></script>
--->
 
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<div id="wrapper">
+<div id="header">
+<!-- キーワード -->
+<h1>ICT2011</h1>
+<!-- ページの概要 -->
+<p class="description"></p>
+<!-- 企業名｜ショップ名｜タイトル -->
+<p class="logo"><a href="/">Account Management System</a></p>
+
+<!-- グローバルナビゲーション -->
+<ul id="globalnavi">
+<!-- カテゴリー 1 -->
+<li id="category01" class="menu" onmouseover="this.className='menuOn'" onmouseout="this.className='menu'">
+<a href="/">Home</a>
+</li>
+<!-- カテゴリー 2 -->
+<li id="category02" class="menu" onmouseover="this.className='menuOn'" onmouseout="this.className='menu'">
+<a href="#">Abstract</a>
+</li>
+<!-- カテゴリー 3 -->
+<li id="category03" class="menu" onmouseover="this.className='menuOn'" onmouseout="this.className='menu'">
+<a href="#">Other</a>
+</li>
+<!-- カテゴリー 4 -->
+<li id="category04" class="menu" onmouseover="this.className='menuOn'" onmouseout="this.className='menu'">
+<a href="#">About</a>
+</li>
+</ul>
+</div>
+<!-- header end -->
+
+<div id="contents">
+<!-- コンテンツここから -->
+
   <p><%= notice %></p>
   <p><%= alert %></p>
   <%= yield %>
+
+<!-- コンテンツここまで -->
+</div>
+<!-- contents end -->
+</div>
+
+<div id="footer">
+<!-- コピーライト / 著作権表示 -->
+<p>Copyright &copy; CT2011. All Rights Reserved.</p>
+<p id="cds">Designed by <a href="http://www.css-designsample.com/">CSS.Design Sample</a></p>
+</div>
 
 </body>
 </html>

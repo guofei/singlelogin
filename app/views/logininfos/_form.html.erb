@@ -441,7 +441,7 @@ Utf8.decode = function(strUtf) {
 function encrypt_account(data){
     var account = document.getElementById('logininfo_account').value;
     var pass = document.getElementById('logininfo_password').value;
-    var key = "keyabc";
+    var key = "<%= @key %>";
     document.getElementById('logininfo_password').value = Aes.Ctr.encrypt(pass, key, 256);
     document.getElementById('logininfo_account').value = Aes.Ctr.encrypt(account, key, 256);
 }
