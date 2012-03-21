@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class LogininfosController < ApplicationController
-  before_filter :authenticate_user!  
+  before_filter :authenticate_user!
   # GET /logininfos
   # GET /logininfos.json
   def index
